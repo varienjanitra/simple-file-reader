@@ -1,6 +1,6 @@
 #include "file_reader.h"
 
-#define FILE_LOADING_MEMORY_BUFFER 128
+#define FILE_LINE_LOADING_BUFFER_SIZE 128
 
 void file_load_to_memory(FILE *file, struct file_inmemory_t *file_inmemory);
 size_t file_count_total_line(FILE *file);
@@ -108,9 +108,9 @@ void file_load_to_memory(FILE *file, struct file_inmemory_t *file_inmemory)
 	size_t character_counter = 0;
 	
 	/* Allocate memory for line buffer */
-	char *line_buffer = malloc(FILE_LOADING_MEMORY_BUFFER * sizeof(char));
-	size_t line_buffer_size = FILE_LOADING_MEMORY_BUFFER;
-	const unsigned char line_buffer_size_increment = FILE_LOADING_MEMORY_BUFFER;
+	char *line_buffer = malloc(FILE_LINE_LOADING_BUFFER_SIZE * sizeof(char));
+	size_t line_buffer_size = FILE_LINE_LOADING_BUFFER_SIZE;
+	const unsigned char line_buffer_size_increment = FILE_LINE_LOADING_BUFFER_SIZE;
 
 	/* Read the file stream until EOF is reached */
 	while (char_buffer != EOF) {
